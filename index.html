@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Константин Губарев — работы</title>
+<meta name="description" content="Сайты и веб-приложения, сделанные с Claude Code">
+<style>
+  :root { --bg:#0e0f14; --card:#171922; --line:#262935; --text:#ecedf2; --muted:#9a9eae; --accent:#ff5fd2; --accent2:#4fe3ff; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  main { max-width:1080px; margin:0 auto; padding:48px 16px 72px; }
+  header h1 { margin:0 0 6px; font-size:clamp(28px,5vw,40px); line-height:1.15; }
+  header p { margin:0; color:var(--muted); max-width:680px; }
+  .contacts { margin-top:14px; display:flex; flex-wrap:wrap; gap:8px 18px; font-size:15px; }
+  a { color:var(--accent2); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  section { margin-top:56px; }
+  h2 { margin:0 0 8px; font-size:24px; }
+  .tag { display:inline-block; margin:0 0 12px; padding:2px 10px; border:1px solid var(--line); border-radius:99px; color:var(--muted); font-size:13px; }
+  section > p { margin:0 0 18px; color:#c9ccd8; max-width:760px; }
+  .stack { color:var(--muted); font-size:14px; }
+  .shots { display:grid; gap:14px; align-items:start; }
+  .shots.k { grid-template-columns: 3fr 1fr 1fr; }
+  .shots.z { grid-template-columns: 3fr 1fr; }
+  .shots img { width:100%; height:auto; display:block; border-radius:12px; border:1px solid var(--line); background:var(--card); cursor:zoom-in; }
+  .kris img { max-width:560px; }
+  @media (max-width:760px) {
+    .shots.k, .shots.z { grid-template-columns: 1fr 1fr; }
+    .shots .wide { grid-column: 1 / -1; }
+  }
+  .note { margin-top:64px; color:var(--muted); font-size:14px; border-top:1px solid var(--line); padding-top:18px; }
+  #zoom { position:fixed; inset:0; background:rgba(0,0,0,.88); display:none; align-items:center; justify-content:center; padding:16px; cursor:zoom-out; }
+  #zoom.on { display:flex; }
+  #zoom img { max-width:100%; max-height:100%; border-radius:10px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Константин Губарев</h1>
+    <p>Делаю сайты и веб-приложения с Claude Code: от задачи до проверки на телефоне и публикации.</p>
+    <div class="contacts">
+      <span>+7 964 747-82-99</span>
+      <a href="https://vk.ru/gubarev_konstantin">vk.ru/gubarev_konstantin</a>
+      <a href="mailto:kostyagubarev57@gmail.com">kostyagubarev57@gmail.com</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>Закрытая соцсеть для компании друзей</h2>
+    <span class="tag">живые пользователи · 130+ версий</span>
+    <p>Лента и галерея фото и видео, отметки людей, реакции и комментарии. Мессенджер с голосовыми, опросами, ответами и закреплёнными сообщениями, push-уведомления на iPhone, установка на телефон как приложение, живые обновления.<br>
+    <span class="stack">HTML/CSS/JS без сборки · Supabase (Postgres, правила доступа, Edge Functions, Realtime) · Yandex Object Storage · GitHub Pages</span></p>
+    <div class="shots k">
+      <img class="wide" src="img/k-desktop-chat.png" alt="Чат на компьютере" loading="lazy">
+      <img src="img/k-chat.png" alt="Чат на телефоне" loading="lazy">
+      <img src="img/k-gallery.png" alt="Галерея на телефоне" loading="lazy">
+    </div>
+  </section>
+
+  <section>
+    <h2>Онлайн-запись для барбершопа</h2>
+    <span class="tag">демо</span>
+    <p>Клиент выбирает услугу, мастера и свободное время, администратор видит расписание и записи. Адаптив под телефон.</p>
+    <div class="shots z">
+      <img class="wide" src="img/zapis-desktop.png" alt="Запись на компьютере" loading="lazy">
+      <img src="img/zapis-phone.png" alt="Запись на телефоне" loading="lazy">
+    </div>
+  </section>
+
+  <section class="kris">
+    <h2>«Крис», голосовой помощник для Windows</h2>
+    <span class="tag">Python</span>
+    <p>Распознавание речи Whisper на видеокарте, синтез голоса Silero, Claude для ответов. Открывает программы и сайты, ставит таймеры и напоминания, ищет в интернете, работает через Telegram-бота. Свой экранный индикатор с анимацией состояний.</p>
+    <div class="shots"><img src="img/kris-hud.png" alt="Индикатор голосового помощника" loading="lazy"></div>
+  </section>
+
+  <p class="note">На скриншотах соцсети демо-данные: люди, сообщения и фото выдуманы.</p>
+</main>
+<div id="zoom"><img alt=""></div>
+<script>
+  const z = document.getElementById('zoom'), zi = z.querySelector('img');
+  document.querySelectorAll('.shots img').forEach(i => i.onclick = () => { zi.src = i.src; z.classList.add('on'); });
+  z.onclick = () => z.classList.remove('on');
+  addEventListener('keydown', e => { if (e.key === 'Escape') z.classList.remove('on'); });
+</script>
+</body>
+</html>
